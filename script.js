@@ -571,3 +571,9 @@
 // student.greet();
 
 
+///////////////////////----------------->REACT
+
+//REACT HOOKS
+//1)useState
+//2)useEffect
+//2)useContext
