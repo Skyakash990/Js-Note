@@ -11,6 +11,16 @@
 // const w=35;
 // const w=66;
 
+//////////////////////////////////////////////-------------->STRINGIFY - PARSE
+
+// let jsonString = '{"name":"Akash","age":"21"}';
+// let obj=JSON.parse(jsonString);
+// console.log(obj);
+
+// let object={name:"Akash",age:21};
+// let string1=JSON.stringify(object);
+// console.log(string1);
+
 ///////////////////////-------------------------------->DIFFERENCE LET VAR CONST BASIS ON SCOPE
 
 // on the basis of scope->var(function scope),let(block scope), const(block scope)
@@ -576,4 +586,175 @@
 //REACT HOOKS
 //1)useState
 //2)useEffect
-//2)useContext
+//2)useContex
+////////////////////////////////---------------------> OBJECT METHODs
+// const car={
+//     Brand:"Toyota",
+//     Year:"2020",
+//     getDetails:function(){
+//         console.log("Brand:"+ this.Brand + " Year:" + this.Year);
+//     }
+// }
+// // car.getDetails();
+// function objectDetails(obj){
+//     console.log(Object.entries(obj));
+// }
+// objectDetails(car);
+
+// Object.assign(target, ...sources);-----------------------
+// Use Cases:
+// ✅ Merging objects
+// ✅ Cloning objects
+// ✅ Adding new properties to an object
+
+
+// const target = { a: 1 };
+// const source = { b: 2, c: 3 };
+
+// Object.assign(target, source);
+
+// console.log(target); // { a: 1, b: 2, c: 3 }
+
+// Object.defineProperty(obj, propertyName, descriptor);----------------------------
+
+// obj → The object where the property will be added.
+// propertyName → The name of the property.
+// descriptor → Defines characteristics like writable, enumerable, configurable, and value.
+
+// const person = {};
+
+// Object.defineProperty(person, 'name', {
+//   value: 'Alice',
+//   writable: false, // Cannot modify
+//   enumerable: true, // Can be listed in loops
+//   configurable: false // Cannot be deleted
+// });
+
+// console.log(person.name); // Alice
+
+// person.name = 'Bob'; // Will not change because writable is false
+// console.log(person.name); // Alice
+
+
+// function Person(name,age){
+//     this.name=name;
+//     this.age=age;
+//     this.getDetails=function(){
+//         return `Name:${this.name} and age:${this.age}`;
+//     }
+// }
+// const person1 = new Person("Akash",21);
+// console.log(person1.getDetails());
+
+/////////////////////////////////////////------------------------->CONSTRUCTOE EXAMPLE
+
+// // Parent Constructor Function
+// function Person(name, age) {
+//     this.name = name;
+//     this.age = age;
+// }
+
+// // Adding a method to Person prototype
+// Person.prototype.getDetails = function() {
+//     return `Name: ${this.name}, Age: ${this.age}`;
+// };
+
+// // Child Constructor Function
+// function Employee(name, age, jobTitle, salary) {
+//     // Call the Parent constructor (Person)
+//     Person.call(this, name, age);
+//     this.jobTitle = jobTitle;
+//     this.salary = salary;
+// }
+
+// // Inherit from Person prototype
+// Employee.prototype = Object.create(Person.prototype);
+
+// // Fix the constructor reference (because it was lost)
+// Employee.prototype.constructor = Employee;
+
+// // Adding a method to Employee prototype
+// Employee.prototype.getJobDetails = function() {
+//     return `Job Title: ${this.jobTitle}, Salary: ${this.salary}`;
+// };
+
+// // Creating instances
+// const person1 = new Person("Alice", 25);
+// console.log(person1.getDetails()); // Name: Alice, Age: 25
+
+// const emp1 = new Employee("Bob", 30, "Software Engineer", 70000);
+// console.log(emp1.getDetails()); // Name: Bob, Age: 30 (inherited from Person)
+// console.log(emp1.getJobDetails()); // Job Title: Software Engineer, Salary: 70000
+
+// console.log(emp1.constructor === Employee); // true
+// console.log(person1.constructor === Person); // true
+
+//////////////////////////////----------------------------->PROMISE
+
+// function fetchUserData() {
+//     return new Promise(resolve => setTimeout(() => resolve("User Data"), 1000));
+// }
+
+// function fetchPosts() {
+//     return new Promise(resolve => setTimeout(() => resolve("User Posts"), 1500));
+// }
+
+// Promise.all([fetchUserData(), fetchPosts()])
+//     .then(results => {
+//         console.log("All data fetched:", results);
+//     })
+//     .catch(error => console.log("Error fetching data:", error));
+
+
+// Simulating API Calls
+// function fetchUserProfile() {
+//     return new Promise(resolve => setTimeout(() => resolve({ name: "Alice", age: 30 }), 1000));
+// }
+
+// function fetchUserPosts() {
+//     return new Promise((_, reject) => setTimeout(() => reject("Failed to load posts"), 1500));
+// }
+
+// function fetchUserComments() {
+//     return new Promise(resolve => setTimeout(() => resolve(["Great post!", "Nice article"]), 500));
+// }
+
+// // Fetch All Data
+// Promise.allSettled([fetchUserProfile(), fetchUserPosts(), fetchUserComments()])
+//     .then(results => {
+//         const profile = results[0].status === "fulfilled" ? results[0].value : "No Profile Data";
+//         const posts = results[1].status === "fulfilled" ? results[1].value : "Posts unavailable";
+//         const comments = results[2].status === "fulfilled" ? results[2].value : "Comments unavailable";
+
+//         console.log("User Profile:", profile);
+//         console.log("User Posts:", posts);
+//         console.log("User Comments:", comments);
+//     });
+
+
+// function fibonacci(n){
+//     while(n>0){
+//        return fibonacci(n-1)+(n-2);
+//     }
+// }
+// console.log(fibonacci(8));
+
+// function zigzag(numRows,s){
+//     let rows=[];
+//     for(let i=0;i<numRows;i++){
+//         rows[i]="";
+//     }
+//     console.log(rows);
+//     let index=0;
+//     let direction=0;
+
+//     for(let i=0;i<s.length;i++){
+//         rows[index]+=s[i];
+//         if(index==0) direction=1;
+//         if(index==numRows-1) direction=-1; 
+//         index=index+direction;
+//     }
+//     console.log(rows);
+// }
+// console.log(zigzag(4,"ABCDED"));
+
